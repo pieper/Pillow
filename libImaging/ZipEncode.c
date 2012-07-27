@@ -73,9 +73,11 @@ ImagingZipEncode(Imaging im, ImagingCodecState state, UINT8* buf, int bytes)
 	context->z_stream.next_in = 0;
 	context->z_stream.avail_in = 0;
 
+	printf ("HOOT: context optimize is: %d\n", context->optimize);
+
 	err = deflateInit2(&context->z_stream,
 			   /* compression level */
-			   (context->optimize) ? Z_BEST_COMPRESSION
+			   (context->optimize) ? Z_NO_COMPRESSION
 					       : Z_DEFAULT_COMPRESSION,
 			   /* compression method */
 			   Z_DEFLATED,
